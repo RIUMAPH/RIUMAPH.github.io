@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dueva: Loan Tracker and Notifier</title>
+    <style>
+        :root {
+            --primary: #10b981; /* Clean Emerald Green */
+            --primary-dark: #059669;
+            --background: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 450px;
+            width: 90%;
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        .app-icon {
+            width: 96px;
+            height: 96px;
+            background: var(--primary);
+            color: white;
+            border-radius: 22%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+        }
+        h1 {
+            font-size: 1.75rem;
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+        }
+        .tagline {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            width: 80%;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+        .btn-download:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+        }
+        .btn-download:active {
+            transform: translateY(1px);
+        }
+        .footer-info {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        .footer-info a {
+            color: var(--text-muted);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Temporary App Icon placeholder (Letter D) -->
+        <div class="app-icon">D</div>
+        
+        <h1>Dueva</h1>
+        <p class="tagline">Loan Tracker and Notifier. Keep your personal finances organized and never miss a payment deadline again.</p>
+        
+        <!-- DIRECT APK DOWNLOAD BUTTON -->
+        <a href="dueva.apk" class="btn-download" download>
+            Download Direct APK
+        </a>
+        
+        <div class="footer-info">
+            <p>Version 1.0.0 • Android 5.0+</p>
+            <p>Looking for our data policy? Read our <a href="privacy.html">Privacy Policy</a>.</p>
+        </div>
+    </div>
+
+</body>
+</html>
