@@ -6,20 +6,20 @@
     <title>RIUMA Ventures, Inc. | Developer Hub</title>
     <style>
         :root {
-            --bg-main: #0a0f1d; /* Deep metallic dark blue */
-            --bg-card: #131a2e; /* Slate/carbon tone card */
-            --accent-silver: #cbd5e1; /* Sleek silver text/borders */
-            --accent-glow: rgba(59, 130, 246, 0.4); /* Circuit blue glow */
+            --bg-main: #060a13; /* Even deeper dark tech background */
+            --glass-bg: rgba(19, 26, 46, 0.45); /* Translucent base */
+            --glass-border: rgba(255, 255, 255, 0.08); /* Soft glass edge */
             --text-primary: #ffffff;
             --text-secondary: #94a3b8;
+            --accent-glow: rgba(59, 130, 246, 0.25);
         }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-main);
             background-image: 
-                linear-gradient(rgba(10, 15, 29, 0.9), rgba(10, 15, 29, 0.95)),
-                radial-gradient(circle at 50% 0%, var(--accent-glow), transparent 60%);
+                linear-gradient(rgba(6, 10, 19, 0.85), rgba(6, 10, 19, 0.95)),
+                radial-gradient(circle at 50% -10%, var(--accent-glow), transparent 70%);
             color: var(--text-primary);
             margin: 0;
             padding: 0;
@@ -28,11 +28,12 @@
             flex-direction: column;
         }
 
-        /* Top Brand Header */
+        /* Top Brand Header (Minimalist & Clean) */
         header {
-            background-color: rgba(19, 26, 46, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #1e293b;
+            background-color: rgba(6, 10, 19, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
             padding: 1.25rem 2rem;
             position: sticky;
             top: 0;
@@ -42,7 +43,7 @@
             max-width: 1100px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start; /* Aligns brand to left */
             align-items: center;
         }
         .brand-logo-container {
@@ -51,61 +52,48 @@
             gap: 12px;
         }
         .brand-logo-img {
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             object-fit: contain;
         }
         .brand-text {
-            font-size: 1.2rem;
-            font-weight: 800;
+            font-size: 1.1rem;
+            font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .meta-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-left: 1.5rem;
-            transition: color 0.2s;
-        }
-        .meta-links a:hover {
             color: var(--text-primary);
+            opacity: 0.9;
         }
 
         /* Master Brand Presentation */
         .hero {
             max-width: 1100px;
-            margin: 4rem auto 2rem auto;
+            margin: 5rem auto 3rem auto;
             padding: 0 2rem;
             text-align: center;
         }
         .hero-logo {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             object-fit: contain;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.1));
+            margin-bottom: 1.75rem;
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.08));
         }
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin: 0 0 0.75rem 0;
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            background: linear-gradient(180deg, #ffffff 30%, #64748b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         .hero p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin: 0 auto;
-            max-width: 650px;
+            max-width: 600px;
             line-height: 1.6;
             letter-spacing: 0.5px;
+            opacity: 0.8;
         }
 
         /* Main Dashboard Grid */
@@ -118,53 +106,51 @@
             flex-grow: 1;
         }
         .section-title {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: var(--text-secondary);
             margin-bottom: 2rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            opacity: 0.7;
         }
         .section-title::after {
             content: '';
             height: 1px;
-            background: #1e293b;
+            background: var(--glass-border);
             flex-grow: 1;
         }
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
 
-        /* Metallic Corporate Cards */
+        /* Glassmorphism Dynamic Cards */
         .app-card {
-            background-color: var(--bg-card);
-            border: 1px solid #1e293b;
-            border-radius: 12px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
             padding: 2.25rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .app-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #64748b, transparent);
-            opacity: 0.5;
+            
+            /* Glassmorphism Core properties */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .app-card:hover {
-            border-color: #475569;
-            transform: translateY(-4px);
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.7), 0 0 15px rgba(59, 130, 246, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.03);
         }
         .app-header {
             display: flex;
@@ -173,37 +159,36 @@
             margin-bottom: 1.5rem;
         }
         .app-logo-img {
-            width: 52px;
-            height: 52px;
-            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
             object-fit: cover;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
         .app-title h2 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin: 0;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
         .app-status {
-            font-size: 0.7rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-size: 0.65rem;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             display: inline-block;
-            margin-top: 4px;
+            margin-top: 5px;
         }
         .status-live { 
             background: rgba(16, 185, 129, 0.1); 
-            color: #10b981; 
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #34d399; 
+            border: 1px solid rgba(16, 185, 129, 0.15);
         }
         .status-pipeline { 
-            background: rgba(148, 163, 184, 0.1); 
-            color: #94a3b8;
-            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: rgba(255, 255, 255, 0.05); 
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .app-description {
@@ -211,44 +196,46 @@
             font-size: 0.95rem;
             line-height: 1.6;
             margin: 0 0 2.5rem 0;
+            opacity: 0.9;
         }
         
-        /* Premium Action Buttons */
+        /* Minimalist Frost Buttons */
         .btn-action {
             display: block;
             text-align: center;
             text-decoration: none;
-            padding: 0.9rem;
-            font-weight: 700;
-            border-radius: 6px;
+            padding: 0.85rem;
+            font-weight: 600;
+            border-radius: 8px;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.2s;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
             box-sizing: border-box;
         }
         .btn-download {
-            background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
-            color: #f8fafc;
-            border: 1px solid #475569;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.07);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
         }
         .btn-download:hover {
-            background: linear-gradient(180deg, #475569 0%, #334155 100%);
-            border-color: #64748b;
-            color: #ffffff;
+            background: #ffffff;
+            color: #060a13;
+            border-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255,255,255,0.4);
         }
 
-        /* Footer */
+        /* Minimalist Footer */
         footer {
-            border-top: 1px solid #1e293b;
+            border-top: 1px solid var(--glass-border);
             padding: 2.5rem;
             text-align: center;
             color: var(--text-secondary);
-            font-size: 0.85rem;
-            background-color: rgba(10, 15, 29, 0.5);
+            font-size: 0.8rem;
+            background-color: rgba(6, 10, 19, 0.4);
+            opacity: 0.6;
         }
-        footer p { margin: 0.5rem 0; letter-spacing: 0.5px; }
+        footer p { margin: 0.4rem 0; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -259,10 +246,6 @@
             <div class="brand-logo-container">
                 <img src="RIUMA Seal.png" alt="RIUMA Logo" class="brand-logo-img">
                 <div class="brand-text">RIUMA Ventures</div>
-            </div>
-            <div class="meta-links">
-                <a href="/app-ads.txt" target="_blank">AdMob Active Node</a>
-                <a href="privacy.html">Compliance</a>
             </div>
         </div>
     </header>
@@ -283,7 +266,6 @@
             <div class="app-card">
                 <div>
                     <div class="app-header">
-                        <!-- Pulling your exact file context safely -->
                         <img src="Dueva Seal.png" alt="Dueva Logo" class="app-logo-img">
                         <div class="app-title">
                             <h2>Dueva</h2>
@@ -300,5 +282,13 @@
             </div>
 
             <!-- FUTURE SYSTEM INGESTION SLOT -->
-            <div class="app-card" style="opacity: 0.5;">
+            <div class="app-card" style="opacity: 0.4;">
                 <div>
+                    <div class="app-header">
+                        <div style="width: 48px; height: 48px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.3rem; color: var(--text-secondary);">+</div>
+                        <div class="app-title">
+                            <h2>Next Project</h2>
+                            <span class="app-status status-pipeline">In Architecture</span>
+                        </div>
+                    </div>
+                    <p class="app-description">
