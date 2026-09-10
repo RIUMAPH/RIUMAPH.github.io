@@ -3,115 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dueva: Loan Tracker and Notifier</title>
+    <title>RIUMA Ventures, Inc. | Developer Hub</title>
     <style>
         :root {
-            --primary: #10b981; /* Clean Emerald Green */
-            --primary-dark: #059669;
-            --background: #f3f4f6;
-            --card-bg: #ffffff;
-            --text-main: #1f2937;
-            --text-muted: #4b5563;
+            --bg-main: #0a0f1d; /* Deep metallic dark blue */
+            --bg-card: #131a2e; /* Slate/carbon tone card */
+            --accent-silver: #cbd5e1; /* Sleek silver text/borders */
+            --accent-glow: rgba(59, 130, 246, 0.4); /* Circuit blue glow */
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
         }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--background);
-            color: var(--text-main);
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(10, 15, 29, 0.9), rgba(10, 15, 29, 0.95)),
+                radial-gradient(circle at 50% 0%, var(--accent-glow), transparent 60%);
+            color: var(--text-primary);
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .container {
-            max-width: 450px;
-            width: 90%;
-            background: var(--card-bg);
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+        /* Top Brand Header */
+        header {
+            background-color: rgba(19, 26, 46, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1e293b;
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand-logo-img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+        .brand-text {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .meta-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+        .meta-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Master Brand Presentation */
+        .hero {
+            max-width: 1100px;
+            margin: 4rem auto 2rem auto;
+            padding: 0 2rem;
             text-align: center;
         }
-        .app-icon {
-            width: 96px;
-            height: 96px;
-            background: var(--primary);
-            color: white;
-            border-radius: 22%;
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.1));
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 0 0 0.75rem 0;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 30%, #64748b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin: 0 auto;
+            max-width: 650px;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Dashboard Grid */
+        main {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 2rem;
+            flex-grow: 1;
+        }
+        .section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 0 auto 1.5rem auto;
-            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+            gap: 10px;
         }
-        h1 {
-            font-size: 1.75rem;
-            margin: 0 0 0.5rem 0;
+        .section-title::after {
+            content: '';
+            height: 1px;
+            background: #1e293b;
+            flex-grow: 1;
+        }
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Metallic Corporate Cards */
+        .app-card {
+            background-color: var(--bg-card);
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 2.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #64748b, transparent);
+            opacity: 0.5;
+        }
+        .app-card:hover {
+            border-color: #475569;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.7), 0 0 15px rgba(59, 130, 246, 0.1);
+        }
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        .app-logo-img {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .app-title h2 {
+            font-size: 1.4rem;
+            margin: 0;
             font-weight: 700;
+            letter-spacing: 0.5px;
         }
-        .tagline {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            line-height: 1.5;
+        .app-status {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 4px;
+        }
+        .status-live { 
+            background: rgba(16, 185, 129, 0.1); 
+            color: #10b981; 
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .status-pipeline { 
+            background: rgba(148, 163, 184, 0.1); 
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        
+        .app-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 2.5rem 0;
+        }
+        
+        /* Premium Action Buttons */
+        .btn-action {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.9rem;
+            font-weight: 700;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+            box-sizing: border-box;
         }
         .btn-download {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            width: 80%;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+            color: #f8fafc;
+            border: 1px solid #475569;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .btn-download:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+            background: linear-gradient(180deg, #475569 0%, #334155 100%);
+            border-color: #64748b;
+            color: #ffffff;
         }
-        .btn-download:active {
-            transform: translateY(1px);
-        }
-        .footer-info {
-            margin-top: 2rem;
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #1e293b;
+            padding: 2.5rem;
+            text-align: center;
+            color: var(--text-secondary);
             font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.4;
+            background-color: rgba(10, 15, 29, 0.5);
         }
-        .footer-info a {
-            color: var(--text-muted);
-            text-decoration: underline;
-        }
+        footer p { margin: 0.5rem 0; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Temporary App Icon placeholder (Letter D) -->
-        <div class="app-icon">D</div>
-        
-        <h1>Dueva</h1>
-        <p class="tagline">Loan Tracker and Notifier. Keep your personal finances organized and never miss a payment deadline again.</p>
-        
-        <!-- DIRECT APK DOWNLOAD BUTTON -->
-        <a href="dueva.apk" class="btn-download" download>
-            Download Direct APK
-        </a>
-        
-        <div class="footer-info">
-            <p>Version 1.0.0 • Android 5.0+</p>
-            <p>Looking for our data policy? Read our <a href="privacy.html">Privacy Policy</a>.</p>
+    <!-- Header Panel -->
+    <header>
+        <div class="header-container">
+            <div class="brand-logo-container">
+                <img src="RIUMA Seal.png" alt="RIUMA Logo" class="brand-logo-img">
+                <div class="brand-text">RIUMA Ventures</div>
+            </div>
+            <div class="meta-links">
+                <a href="/app-ads.txt" target="_blank">AdMob Active Node</a>
+                <a href="privacy.html">Compliance</a>
+            </div>
         </div>
+    </header>
+
+    <!-- Master Brand Presentation -->
+    <div class="hero">
+        <img src="RIUMA Seal.png" alt="RIUMA Master Graphic" class="hero-logo">
+        <h1>RIUMA VENTURES, INC.</h1>
+        <p>Enterprise Application Ecosystem & Digital Architecture Infrastructure Hub</p>
     </div>
 
-</body>
-</html>
+    <!-- Active Projects Dashboard Module -->
+    <main>
+        <div class="section-title">Ecosystem Registry</div>
+        <div class="app-grid">
+            
+            <!-- MODULE: DUEVA LOAN TRACKER -->
+            <div class="app-card">
+                <div>
+                    <div class="app-header">
+                        <!-- Pulling your exact file context safely -->
+                        <img src="Dueva Seal.png" alt="Dueva Logo" class="app-logo-img">
+                        <div class="app-title">
+                            <h2>Dueva</h2>
+                            <span class="app-status status-live">Live Deployment</span>
+                        </div>
+                    </div>
+                    <p class="app-description">
+                        Loan Tracker and Notifier. Safely structure personal balance ledgers, track custom repayment matrix paths, and coordinate automatic transaction notification logs.
+                    </p>
+                </div>
+                <a href="app-release.apk" class="btn-action btn-download" download>
+                    Download Production APK
+                </a>
+            </div>
+
+            <!-- FUTURE SYSTEM INGESTION SLOT -->
+            <div class="app-card" style="opacity: 0.5;">
+                <div>
